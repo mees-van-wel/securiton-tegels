@@ -1,113 +1,242 @@
+"use client";
+
+import Autoplay from "embla-carousel-autoplay";
+import { Carousel } from "@mantine/carousel";
+import { useRef } from "react";
+import { Group, Title, Text, Stack, Badge, Flex, List } from "@mantine/core";
 import Image from "next/image";
+import tegelGeel from "@/assets/tegel-geel.jpg";
+import tegelZwart from "@/assets/tegel-zwart.jpg";
+import { IconCheck } from "@tabler/icons-react";
+import mkbTop from "@/assets/mkb-top.png";
+import Link from "next/link";
 
 export default function Home() {
+  const autoplay = useRef(Autoplay({ delay: 2000 }));
+
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">src/app/page.tsx</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:size-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+    <Stack p="xl" gap="4rem">
+      <Stack gap="xl" maw={900}>
+        <Group justify="space-between">
+          <Badge
+            leftSection={<IconCheck size="1rem" stroke={4} />}
+            variant="outline"
+            size="lg"
           >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
-      </div>
-
-      <div className="relative z-[-1] flex place-items-center before:absolute before:h-[300px] before:w-full before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-full after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 sm:before:w-[480px] sm:after:w-[240px] before:lg:h-[360px]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className="mb-32 grid text-center lg:mb-0 lg:w-full lg:max-w-5xl lg:grid-cols-4 lg:text-left">
+            Duurzaam
+          </Badge>
+          <Badge
+            leftSection={<IconCheck size="1rem" stroke={4} />}
+            variant="outline"
+            size="lg"
+          >
+            Betrouwbaar
+          </Badge>
+          <Badge
+            leftSection={<IconCheck size="1rem" stroke={4} />}
+            variant="outline"
+            size="lg"
+          >
+            Onderhoudsvrij
+          </Badge>
+          <Badge
+            leftSection={<IconCheck size="1rem" stroke={4} />}
+            variant="outline"
+            size="lg"
+          >
+            Veilig
+          </Badge>
+        </Group>
+        <Title>Securiton rubberen tegels</Title>
+        <Text className="text-pretty" w="100%">
+          De openbare ruimte vereist in toenemende mate bijzondere aandacht. Dat
+          geldt voor zowel de inrichting- als de te gebruiken materialen in
+          Nederland en in België. Onze{" "}
+          <Link href="/producten">rubberen tegels</Link> zijn speciaal ontworpen
+          voor twee verschillende doelgroepen met ieder hun eigen toepassing in
+          de openbare ruimte
+        </Text>
+      </Stack>
+      <Carousel
+        // plugins={[autoplay.current]}
+        onMouseEnter={autoplay.current.stop}
+        onMouseLeave={autoplay.current.reset}
+        slideGap="md"
+        loop
+        draggable={false}
+        withControls={false}
+      >
+        <Carousel.Slide>
+          <Stack
+            style={{
+              background: "url('/bg.png')",
+              backgroundSize: "contain",
+            }}
+            className="border-2 rounded-md border-[#8d93a8]"
+            justify="space-between"
+            gap={0}
+          >
+            <Flex p="md" className="bg-[#8d93a8]" justify="center" w="100%">
+              <Image src={tegelGeel} alt="Tegel Geel" width={150} />
+            </Flex>
+            <Stack
+              p="md"
+              style={{
+                backgroundColor: "rgba(255, 255, 255, 0.5)",
+              }}
+            >
+              <Title order={3}>Duurzaamheid</Title>
+              <Text>
+                Ondergronden in de openbare ruimte dienen over een lengte van
+                jaren bestand te zijn tegen zware stedelijke belasting en
+                extreme weersomstandigheden. Het materiaal moet ook bestendig
+                zijn tegen slijtage. De Securiton combinatie van primaire rubber
+                en beton geeft de beste garantie voor een duurzame ondergrond.
+              </Text>
+            </Stack>
+          </Stack>
+          {/* <Group
+            className="border-2 rounded-md border-[#8d93a8]"
+            justify="space-between"
+            wrap="nowrap"
+            gap="xl"
+          >
+            <Image src={tegelGeel} alt="Tegel Geel" width={150} />
+            <Stack>
+              <Title order={3}>Duurzaamheid</Title>
+              <Text>
+                Ondergronden in de openbare ruimte dienen over een lengte van
+                jaren bestand te zijn tegen zware stedelijke belasting en
+                extreme weersomstandigheden. Het materiaal moet ook bestendig
+                zijn tegen slijtage. De Securiton combinatie van primaire rubber
+                en beton geeft de beste garantie voor een duurzame ondergrond.
+              </Text>
+            </Stack>
+            <Image src={tegelZwart} alt="Tegel Zwart" width={150} />
+          </Group> */}
+        </Carousel.Slide>
+      </Carousel>
+      <Stack>
+        <Group align="stretch" wrap="nowrap">
+          <div
+            className="rounded-md"
+            style={{
+              minWidth: "2px",
+              backgroundColor: "black",
+            }}
+          />
+          <Title order={3}>
+            Waarschuwings- en informatietegels voor mensen met een visuele
+            beperking.
+          </Title>
+        </Group>
+        <Text>
+          Securiton levert hoogwaardige rubberen (noppen) tegels, die dienen als
+          waarschuwingsmarkering, binnen geleidelijnen voor blinden en
+          slechtzienden. Naast de voor Nederland unieke noppenstructuur heeft
+          deze tegel ook holle ruimtes tussen beton en rubber, waardoor een
+          ideaal klank kontrast ontstaat : de rubberen klanktegel.
+        </Text>
+        <Text>
+          Daarnaast levert Securiton ook rubberen informatiemarkeringen, die de
+          visueel gehandicapte attent maakt op:
+        </Text>
+        <List className="list-disc">
+          <List.Item>Een verandering in de geleideroute</List.Item>
+          <List.Item>
+            Ter plekke aanwezige informatie via bijvoorbeeld een auditieve paal
+          </List.Item>
+          <List.Item>De aanwezigheid van een abri</List.Item>
+          <List.Item>Etc.</List.Item>
+        </List>
+        <Text>
+          Lees meer over noppen{" "}
+          <Link href="/producten/waarschuwingstegels">waarschuwingstegels</Link>{" "}
+          of <Link href="/producten/waarschuwingstegels">informatietegels</Link>
+          .
+        </Text>
+        <Text>
+          De Securiton rubber tegels voldoen aan de meest recente CROW normen,
+          zoals de instapmarkering voor Halteplaatsen. Hierdoor worden blinden
+          en slechtzienden in hun mobiliteit voorzien volgens de geldende CROW
+          normen.
+        </Text>
+      </Stack>
+      <Stack>
+        <Group align="stretch" wrap="nowrap">
+          <div
+            className="rounded-md"
+            style={{
+              minWidth: "2px",
+              backgroundColor: "black",
+            }}
+          />
+          <Title order={3}>
+            Valdempende veiligheidstegels voor Kinderen op Speelplaatsen
+          </Title>
+        </Group>
+        {/* <Image src={} /> */}
+        <Text>
+          Securiton levert hoogwaardige rubberen veiligheidstegels die dienen
+          als valdempende ondergrond voor speeltoestellen en speelplaatsen. Deze
+          valdempende rubbertegels leveren een grote bijdrage aan de veiligheid
+          van speeltoestellen.
+        </Text>
+        <Text>
+          Lees meer over{" "}
+          <Link href="/producten/veiligheidstegels">Veiligheidstegels</Link>
+        </Text>
+        <Text>
+          De Securiton rubberen tegels kenmerken zich voorts door de speciale
+          gepatenteerde verankering van het rubber in de beton en het speciaal
+          ontworpen slipvrij- afwateringsprofiel, waardoor een duurzame – zich
+          onderscheidende constructie met holle ruimtes - ontstaat.
+        </Text>
+        <Text>
+          Securiton staat voor bodemmaterialen van de hoogste kwaliteit. Onder
+          normale omstandigheden gaan de Securiton rubber tegels meer dan 15
+          jaar mee, dus geen onderhoud of vervanging van versleten materiaal.
+        </Text>
+        <Text>
+          De combinatie van beton met een dikke rubberen bovenlaag geeft
+          bovendien de garantie dat over al deze jaren wordt voldaan aan
+          wettelijke normen en richtlijnen
+        </Text>
+      </Stack>
+      <Stack>
+        <Group align="stretch" wrap="nowrap">
+          <div
+            className="rounded-md"
+            style={{
+              minWidth: "2px",
+              backgroundColor: "black",
+            }}
+          />
+          <Title order={3}>Securiton bestekservice</Title>
+        </Group>
+        <Text>
+          De bestekomschrijvingen van de Securiton producten zijn online
+          beschikbaar! Hierdoor kunt u als bestekschrijver, de
+          bestekomschrijvingen direct inpassen uw bestekplan.
+        </Text>
+        <Text>
+          Onze bestekservice omvat teksten in RAW, STABU en Spe-X (voor
+          Nederland) en C3A (voor België).
+        </Text>
+        <Text>
+          De Securiton tegels voldoen aan de meest recente CROW normen.
+        </Text>
         <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
+          href="https://www.kvkinnovatietop100.nl/site/Rubet-Securitontegels-klanktegel-visueel-gehandicapten"
           target="_blank"
           rel="noopener noreferrer"
         >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Docs{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Find in-depth information about Next.js features and API.
-          </p>
+          <Group wrap="nowrap">
+            <Image alt="MKB Innovatie top 100 Badge" src={mkbTop} />
+            <Text>Klanktegel Securiton in MKB Innovatie top 100</Text>
+          </Group>
         </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Learn{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Templates{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Explore starter templates for Next.js.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Deploy{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-balance text-sm opacity-50">
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
+      </Stack>
+    </Stack>
   );
 }
